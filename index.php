@@ -1,8 +1,8 @@
 <?php
 
-$db_name ='mysql:host=localhost;port=3333;dbname=contact_db;';
-$user_name='root';
-$user_pwd ='';
+$db_name ='mysql:host=localhost;port=3306;dbname=school;';
+$user_name='ben';
+$user_pwd ='linux4you!';
 
 $conn =new PDO($db_name ,$user_name ,$user_pwd);
 
@@ -32,13 +32,13 @@ if(isset($_POST['send']))
     $gender = filter_var($gender, FILTER_SANITIZE_STRING);
 
 
-    $select_contact =$conn ->prepare("SELECT * FROM `contact_form` 
-    WHERE nom =? 
-    AND prenom = ? 
+    $select_contact =$conn ->prepare("SELECT * FROM `contact_form`
+    WHERE nom =?
+    AND prenom = ?
     AND email = ?
     AND number = ?
     AND courses = ?
-    AND commentaire = ? 
+    AND commentaire = ?
     AND gender = ? ") ;
     $select_contact -> execute([$nom, $prenom, $email, $number, $courses, $commentaire, $gender]);
 
@@ -79,8 +79,8 @@ if(isset($_POST['send']))
   </head>
   <body>
     <!-- ----------------------------------------------------------------------- -->
-    
-    <?php 
+
+    <?php
 if(isset($message)){
   foreach($message as $message){
     echo '
@@ -92,7 +92,7 @@ if(isset($message)){
   }
 }
 ?>
-    
+
 
     <!-- ----------------------------------------------------------------------- -->
 
@@ -268,8 +268,9 @@ if(isset($message)){
       <div class="swiper teachers-slider">
         <div class="swiper-wrapper">
           <div class="swiper-slide slide">
-            <img src="images/bentalla.JPG" alt="" />
+            <img src="images/bentalla.jpg" alt="" />
             <div class="share">
+              <a href="http://www.bentalla.cloud" class="fa fa-globe"></a>
               <a href="" class="fab fa-facebook-f"></a>
               <a href="" class="fab fa-twitter"></a>
               <a href="" class="fab fa-linkedin"></a>
@@ -502,11 +503,11 @@ if(isset($message)){
             onkeypress="if(this.value.length ==10) return false;" />
           <select name="courses" class="box">
             <option value="" disabled selected>Selectionnez un cour--</option>
-            <option value="Cour 1">Apprendre et maitriser SQL</option>
-            <option value="Cour 2">Python</option>
-            <option value="Cour 3">Conception 3D Tinkercad</option>
-            <option value="Cour 4">Découverte de Laravel 10</option>
-            <option value="Cour 5">Découverte de WordPress</option>
+            <option value="Apprendre et maitriser SQL">Apprendre et maitriser SQL</option>
+            <option value="Python">Python</option>
+            <option value="Conception 3D Tinkercad">Conception 3D Tinkercad</option>
+            <option value="Découverte de Laravel 10">Découverte de Laravel 10</option>
+            <option value="Découverte de WordPress">Découverte de WordPress</option>
           </select>
           <span>Commentaire</span>
           <textarea
